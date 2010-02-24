@@ -5,11 +5,15 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "propaganda"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
-    gem.email = "jeff@baobabhealth.org"
+    gem.summary = %Q{Generate PDFs from HTML. Generate them from Markdown and Textile. Take over the world.}
+    gem.description = %Q{Propaganda uses Apache FOP to convert html to PDF using a series of stylesheets. Propaganda can also format textile and markdown documents. }
+    gem.email = "jeff@socialrange.org"
     gem.homepage = "http://github.com/jeffrafter/propaganda"
     gem.authors = ["Jeff Rafter"]
+    gem.files = FileList["[A-Z]*", "{bin,java,lib,templates,test}/**/*"] 
+    gem.add_dependency "BlueCloth", ">= 1.0.0"
+    gem.add_dependency "RedCloth", ">= 4.1.1"
+    gem.add_dependency "rjb", ">= 1.2.0"
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
@@ -21,7 +25,7 @@ end
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
+  test.pattern = 'test/**/*_test.rb'
   test.verbose = true
 end
 
@@ -29,7 +33,7 @@ begin
   require 'rcov/rcovtask'
   Rcov::RcovTask.new do |test|
     test.libs << 'test'
-    test.pattern = 'test/**/test_*.rb'
+    test.pattern = 'test/**/*_test.rb'
     test.verbose = true
   end
 rescue LoadError

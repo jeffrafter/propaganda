@@ -1,6 +1,67 @@
 = propaganda
 
-Description goes here.
+Generate PDFs from HTML. Generate them from Markdown and Textile. Take over
+the world. 
+
+== Installation
+
+Propaganda is available on Rubygems.org. 
+
+  gem install propaganda
+  
+This will install the library as well as the propoganda binary. 
+
+== Usage
+
+Once installed you can run
+
+  propaganda --help
+  
+Some examples:
+
+  propaganda sample.html sample.pdf
+  
+Will convert sample.html to sample.pdf. You can also submit textile and 
+markdown documents and these will be automagically converted.
+
+  propaganda sample.textile sample.pdf
+  
+The document will be formatted into a basic layout.
+
+== Apache and the Formatting Objects processor
+
+Propaganda uses the Apache FOP library (http://xmlgraphics.apache.org/fop/). I 
+have included those binaries in the gem so that the versions are set. The 
+licenses for items in the jar folder are separate from propaganda.
+
+== Doing it with style
+
+The stylesheets I am using are based entirely on the stylesheets from 
+Antenna House, Inc. (http://www.antennahouse.com) that were made for their 
+formatting engine. It was widely known that these were incompatible with 
+Apache FOP for various reasons. Well, I fixed those, mostly and then tweaked
+things to do what I want a bit more.
+
+I also reworked the way keep-with-next and friends works. Basically there 
+wasn't a good way to implement this directly, so I extended support for blocks
+with css classes. Breaking logic (for table cells and block level objects) 
+'break-before' and 'break-after' converted to break-before="<context>" or 
+break-after="<context>" where <context> is column if it is within a table 
+otherwise page. Keeping logic (for table cells and block level objects) 
+'keep-together' and 'keep-with-next' and 'keep-with-previous' and converted to 
+keep-together.within-<context>="always" etc. where <context> is line if the 
+declaration is found on an inline level element, column if within a table cell 
+otherwise page.
+
+== Note on Ruby Java Bridge
+
+For non-jruby usage this gem relies on the Ruby Java Bridge (rjb) which is
+available on rubygems (http://rubygems.org/gems/rjb). Source is available
+on Github (http://github.com/arton/rjb). When installing the rjb gem you
+must have a JAVA_HOME environment variable set. If you install your gems
+using sudo this can be flummoxing. Just use:
+
+sudo env JAVA_HOME=/Library/Java/Home gem install rjb
 
 == Note on Patches/Pull Requests
  

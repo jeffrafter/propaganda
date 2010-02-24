@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+def usage
+  puts "Usage: propaganda [options] input output" 
+  puts ""
+  puts "  --title=='A Friendly Title' (will detect from filename if omitted)"
+  puts "  --template=={default|clean} (will use default if omitted)"
+  puts "  --engine=={markdown|textile|none} (will detect from filename if omitted)"
+  puts "  --verbose Show errors and warnings"  
+  puts "  --help"
+  exit
+end
+
+usage if ARGV.size == 0 || ARGV.include?('--help')
+
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib')) if ENV['PROPAGANDA_ENV'] == 'test'
+
+require 'rubygems'
+require 'propaganda'
+
+def opt(name)
+  p = ARGV.select{|arg| arg =~ /^--#{name}/}.first
+  p.gsub(/^--#{name}=/, '') if p
+end
+
+template = opt "template"
+title = opt "title"
+engine = opt "engine"
+verbose = !opt("verbose").nil?
+
+# Grab the params
+params = ARGV.reject{|arg| arg =~ /^--/}
+input = params[0] rescue nil
+output = params[1] rescue nil
+usage if input.nil? || output.nil?
+
+# Run it
+Propaganda.convert(input, output, title, template, engine, verbose)
