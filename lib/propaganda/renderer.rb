@@ -4,7 +4,7 @@ module Propaganda
 
   def self.check_dependencies
     require 'propaganda/fop/shell' 
-    require 'propaganda/fop/bridge'
+    require 'propaganda/fop/bridge' rescue false
   end
 
   MODE = check_dependencies ? 'rjb' : 'shell'
