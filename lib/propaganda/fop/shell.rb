@@ -15,14 +15,13 @@ module Propaganda
           stdin, stdout, stderr = Open3.popen3(command)
           @errors = stderr.read
           @output = stdout.read
-          raise "Could not invoke: #{@errors}" unless @errors.blank?
           @output
         end  
       end
 
       private 
       
-      def self.jarpath
+      def jarpath
         path = File.join(File.dirname(__FILE__), '..', '..', '..', 'java')
         File.expand_path(File.join(path, 'fop.jar'))
       end
