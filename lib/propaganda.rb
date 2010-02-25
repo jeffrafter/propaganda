@@ -1,4 +1,4 @@
-require 'propaganda/fop'
+require 'propaganda/renderer'
 require 'propaganda/formatter'
 
 module Propaganda
@@ -8,7 +8,7 @@ module Propaganda
     text = IO.read(input)
     formatter = Formatter.new
     text = formatter.format(text, title, engine)
-    fop = Fop.new(verbose)
+    fop = Renderer.new(verbose)
     fop.render(text, output, template)
   end
   

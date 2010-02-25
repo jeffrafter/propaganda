@@ -3,6 +3,21 @@
 Generate PDFs from HTML. Generate them from Markdown and Textile. Take over
 the world. 
 
+== Note on Ruby Java Bridge and Invoking the Apache library
+
+This gem relies on a java binary and Ruby provides a few ways of getting to
+that. This gem provides support for executing the binary via the Ruby Java 
+Bridge (rjb) which is available on rubygems (http://rubygems.org/gems/rjb). 
+Source is available on Github (http://github.com/arton/rjb). When installing 
+the rjb gem you must have a JAVA_HOME environment variable set. If you install 
+your gems using sudo this can be flummoxing. For OSX:
+
+  sudo env JAVA_HOME=/Library/Java/Home gem install rjb
+
+If you don't want to use rjb, you don't have to. The gem can invoke the java
+library via shell commands if it doesn't detect the rjb gem. In order to
+facilitate this you must have the java application on your path.
+
 == Installation
 
 Propaganda is available on Rubygems.org. 
@@ -52,16 +67,6 @@ otherwise page. Keeping logic (for table cells and block level objects)
 keep-together.within-<context>="always" etc. where <context> is line if the 
 declaration is found on an inline level element, column if within a table cell 
 otherwise page.
-
-== Note on Ruby Java Bridge
-
-For non-jruby usage this gem relies on the Ruby Java Bridge (rjb) which is
-available on rubygems (http://rubygems.org/gems/rjb). Source is available
-on Github (http://github.com/arton/rjb). When installing the rjb gem you
-must have a JAVA_HOME environment variable set. If you install your gems
-using sudo this can be flummoxing. Just use:
-
-sudo env JAVA_HOME=/Library/Java/Home gem install rjb
 
 == Note on Patches/Pull Requests
  

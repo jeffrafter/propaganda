@@ -13,7 +13,6 @@ begin
     gem.files = FileList["[A-Z]*", "{bin,java,lib,templates,test}/**/*"] 
     gem.add_dependency "BlueCloth", ">= 1.0.0"
     gem.add_dependency "RedCloth", ">= 4.1.1"
-    gem.add_dependency "rjb", ">= 1.2.0"
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
