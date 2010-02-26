@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{propaganda}
-  s.version = "0.4.0"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeff Rafter"]
-  s.date = %q{2010-02-25}
+  s.date = %q{2010-02-26}
   s.default_executable = %q{propaganda}
   s.description = %q{Propaganda uses Apache FOP to convert html to PDF using a series of stylesheets. Propaganda can also format textile and markdown documents. }
   s.email = %q{jeff@socialrange.org}
