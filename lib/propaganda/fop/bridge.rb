@@ -24,8 +24,8 @@ module Propaganda
       private 
       
       def self.classpath
-        path = File.join(File.dirname(__FILE__), '..', '..', '..', 'java')
-        File.expand_path(path)+':'+File.join(path, 'fop.jar')
+        path = File.expand_path(File.join(File.dirname(__FILE__), '..', '..', '..', 'java'))
+        [path, File.join(path, 'fop.jar')].join(File::PATH_SEPARATOR)
       end
       
       Rjb::load(Bridge.classpath, ['-Djava.awt.headless=true'])
