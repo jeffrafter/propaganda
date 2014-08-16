@@ -52,7 +52,6 @@ Gem::Specification.new do |s|
      "test/samples/sample.fo",
      "test/samples/sample.html",
      "test/samples/sample.markdown",
-     "test/samples/sample.pdf",
      "test/samples/sample.textile"
   ]
   s.homepage = %q{http://github.com/jeffrafter/propaganda}
