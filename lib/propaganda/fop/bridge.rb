@@ -14,7 +14,7 @@ module Propaganda
         # protection against rogue System.exit calls in the library
         SystemExitManager.disableSystemExitCall
         Manager._invoke('main', '[Ljava.lang.String;', args)
-        Output.toString
+        Output.toString + Error.toString
       rescue Exception => e
         raise "Could not render document [#{e}] (" + Errors.toString + ")"
       ensure  
